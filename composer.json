@@ -1,0 +1,20 @@
+{
+    "name": "catalyst/silverstripe-ableplayer",
+    "description": "Accessible video wrapper for Silverstripe CMS",
+    "keywords": ["silverstripe", "video", "audio", "accessibility", "W3C", "WCAG", "php"],
+    "type": "silverstripe-vendormodule",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "elliot sawyer",
+            "email": "elliotsawyer@catalyst.net.nz"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+	"silverstripe/framework": "^4"
+    },
+    "suggest": {
+        "roave/security-advisories": "Avoids installation of package versions with vulnerabilities"
+    }
+}
