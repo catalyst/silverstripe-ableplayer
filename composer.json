@@ -16,5 +16,10 @@
     },
     "suggest": {
         "roave/security-advisories": "Avoids installation of package versions with vulnerabilities"
+    },
+    "extra": {
+        "expose": [
+            "client"
+        ]
     }
 }

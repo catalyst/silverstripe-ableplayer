@@ -1,11 +1,14 @@
 <?php
 namespace Catalyst\AblePlayer;
 
+use SilverStripe\Core\Config\Configurable;
 use SilverStripe\View\Parsers\ShortcodeHandler;
 
 class AccessibleVideoShortcodeProvider implements ShortcodeHandler
 {
+    use Configurable;
 
+    private static $vimeo_player_url = 'https://player.vimeo.com/api/player.js';
     /**
      * Gets the list of shortcodes provided by this handler
      *
