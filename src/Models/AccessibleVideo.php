@@ -20,6 +20,24 @@ class AccessibleVideo extends DataObject
     private static $singular_name = 'Video';
     private static $plural_name = 'Videos';
 
+    //pass in a different version of jquery, if you're already using it elsewhere
+    //Version 3.2.1 or higher is recommended
+    //this needs to match the exact version loaded from //code.jquery.com/jquery-%s.min.js, or jquery will get loaded twice
+    private static $jquery_version = '3.5.1';
+
+    public function __construct($record = null, $isSingleton = false, $queryParams = [])
+    {
+        parent::__construct($record, $isSingleton, $queryParams);
+        $url = sprintf("//code.jquery.com/jquery-%s.min.js", $this->config()->jquery_version);
+        Requirements::javascript($url);
+        Requirements::javascript("catalyst/silverstripe-ableplayer:client/thirdparty/js.cookie.js");
+        Requirements::javascript("catalyst/silverstripe-ableplayer:client/build/ableplayer.min.js");
+        Requirements::css("catalyst/silverstripe-ableplayer:client/build/ableplayer.min.css");
+        if ($this->ID && $this->Type == 'Vimeo') {
+            Requirements::javascript('https://player.vimeo.com/api/player.js');
+        }
+    }
+
     public function YouTubeID()
     {
         if($this->Type !== 'YouTube') return null;
@@ -43,27 +61,5 @@ class AccessibleVideo extends DataObject
                 return $matches[4];
             }
         }
-    }
-
-    public function getCMSFields()
-    {
-        $fields = parent::getCMSFields();
-
-        // Requirements::javascript("//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js");
-        // Requirements::javascript('catalyst/silverstripe-ableplayer:client/dist/js.cookie.js');
-        // Requirements::css('catalyst/silverstripe-ableplayer:client/dist/ableplayer.min.css');
-        // Requirements::javascript('catalyst/silverstripe-ableplayer:client/dist/ableplayer.js');
-        $fields->addFieldToTab(
-            'Root.Main',
-            TextareaField::create(
-                'AccessibleVideoHTML',
-                'Markup',
-                SSViewer::execute_template(
-                    'Catalyst/AblePlayer/AccessibleVideo',
-                    $this
-                )
-            )
-        );
-        return $fields;
     }
 }
