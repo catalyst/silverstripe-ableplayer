@@ -25,6 +25,12 @@ class AccessibleVideo extends DataObject
     //this needs to match the exact version loaded from //code.jquery.com/jquery-%s.min.js, or jquery will get loaded twice
     private static $jquery_version = '3.5.1';
 
+    private static $summary_fields = [
+        'URL' => "Link",
+        'Title' => "Title"
+    ];
+
+
     public function __construct($record = null, $isSingleton = false, $queryParams = [])
     {
         parent::__construct($record, $isSingleton, $queryParams);
