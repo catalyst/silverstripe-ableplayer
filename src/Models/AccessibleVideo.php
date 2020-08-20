@@ -13,7 +13,8 @@ class AccessibleVideo extends DataObject
     ];
 
     private static $has_many = [
-        'Captions' => AccessibleVideoCaption::class
+        'Captions' => AccessibleVideoCaption::class,
+        'AudioDescriptions' => AccessibleVideoAudioDescription::class
     ];
 
     private static $table_name = 'AccessibleVideo';
@@ -29,7 +30,8 @@ class AccessibleVideo extends DataObject
     private static $summary_fields = [
         'URL' => "Link",
         'Title' => "Title",
-        'Captions.Count' => 'Caption tracks'
+        'Captions.Count' => 'Caption tracks',
+        'AudioDescriptions.Count' => 'Audio descriptions'
     ];
 
     public function __construct($record = null, $isSingleton = false, $queryParams = [])

@@ -17,4 +17,14 @@
     <% end_if %>
     <% end_loop %>
     <% end_if %>
+
+    <% if AudioDescriptions.Count %>
+    <% loop AudioDescriptions %>
+    <% if $Track %>
+        <track kind="descriptions" src="$Track.URL" srclang="$Language"/>
+    <% else_if $AudioDescription %>
+        <track kind="descriptions" src="$AudioDescriptionLink" srclang="$Language"/>
+    <% end_if %>
+    <% end_loop %>
+    <% end_if %>
 </video>
