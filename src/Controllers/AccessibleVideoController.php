@@ -17,14 +17,9 @@ class AccessibleVideoController extends Controller
 
         if ($id && $record = AccessibleVideoCaption::get()->byID($id)) {
             $this->response->addHeader('content-type', 'text/vtt');
-            return sprintf(
-                "WEBVTT\n"
-                ."kind: captions\n"
-                ."lang: %s\n"
-                ."\n"
-                ."%s\n ",
-                $record->Language,
-                $record->Transcript
+            return SSViewer::execute_template(
+                'Catalyst/AblePlayer/AccessibleVideoCaptionTranscript',
+                $record
             );
         }
     }
