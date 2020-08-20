@@ -2,6 +2,7 @@
 namespace Catalyst\AblePlayer;
 
 use SilverStripe\Core\Config\Configurable;
+use SilverStripe\Core\Convert;
 use SilverStripe\View\Parsers\ShortcodeHandler;
 use SilverStripe\View\SSViewer;
 
@@ -36,11 +37,33 @@ class AccessibleVideoShortcodeProvider implements ShortcodeHandler
      */
     public static function handle_shortcode($arguments, $content, $parser, $shortcode, $extra = [])
     {
-        $record = AccessibleVideo::get()->byID( (int) $arguments['id']);
-        return SSViewer::execute_template(
-            'Catalyst/AblePlayer/AccessibleVideo',
-            $record
-        );
+        $record = null;
+        if (isset($arguments['url'])) {
+            $record = AccessibleVideo::get()->find('URL', Convert::raw2sql($arguments['url']));
+
+            if (!($record && $record->ID)) {
+                $video = AccessibleVideo::create();
+                $video->URL = Convert::raw2sql($arguments['url']);
+                $video->Type = strtolower($shortcode) == 'youtube' ? 'YouTube' : 'Vimeo';
+                $video->write();
+
+                $record = $video;
+            }
+        }
+
+        if (isset($arguments['id'])) {
+            $record = AccessibleVideo::get()->byID((int) $arguments['id']);
+        }
+
+        if ($record && $record->ID) {
+            return SSViewer::execute_template(
+                'Catalyst/AblePlayer/AccessibleVideo',
+                $record
+            );
+
+        }
+
+        return '';
     }
 
 }
