@@ -1,12 +1,6 @@
 <?php
 namespace Catalyst\AblePlayer;
 
-use SilverStripe\Assets\File;
-use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Forms\DropdownField;
-
-use SilverStripe\Forms\TextField;
-use SilverStripe\i18n\Data\Intl\IntlLocales;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\View\Requirements;
 
@@ -16,16 +10,10 @@ class AccessibleVideo extends DataObject
         'Title' => 'Varchar(255)',
         'Type' => 'Enum("Vimeo,YouTube", "YouTube")',
         'URL' => 'Varchar(255)',
-        'CaptionsTrackLabel' => 'Varchar(80)',
-        'CaptionsTrackLang' => 'Varchar(3)'
     ];
 
-    private static $has_one = [
-        'CaptionsTrack' => File::class
-    ];
-
-    private static $defaults = [
-        'CaptionsTrackLang' => 'en'
+    private static $has_many = [
+        'Captions' => AccessibleVideoCaption::class
     ];
 
     private static $table_name = 'AccessibleVideo';
@@ -40,33 +28,9 @@ class AccessibleVideo extends DataObject
 
     private static $summary_fields = [
         'URL' => "Link",
-        'Title' => "Title"
+        'Title' => "Title",
+        'Captions.Count' => 'Caption tracks'
     ];
-
-    private static $owns = [
-        'CaptionsTrack'
-    ];
-
-    public function getCMSFields()
-    {
-        $fields = parent::getCMSFields();
-
-        $fields->addFieldsToTab(
-            'Root.Captions',
-            [
-                UploadField::create('CaptionsTrack', 'Captions Track')
-                    ->setDescription('Web VTT file prepared for this video. This is written text shown underneath spoken words for users unable to hear. For more on this format, see <a href="https://en.wikipedia.org/wiki/WebVTT#Example_of_WebVTT_format" target="_blank">this article</a>'),
-                DropdownField::create(
-                    'CaptionsTrackLang',
-                    'Source Language'
-                )->setSource(IntlLocales::config()->languages),
-                TextField::create('CaptionsTrackLabel', 'Label')
-            ]
-        );
-
-        return $fields;
-    }
-
 
     public function __construct($record = null, $isSingleton = false, $queryParams = [])
     {
