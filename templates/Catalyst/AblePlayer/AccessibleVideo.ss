@@ -1,3 +1,5 @@
+<% if $YouTubeID || $VimeoID %>
+
 <% if Chapters %>
 <div id="chapters-$YouTubeID$VimeoID"></div>
 <% end_if %>
@@ -38,9 +40,8 @@
     <% end_loop %>
     <% end_if %>
 
-    <% if Chapters.Count %>xx
+    <% if Chapters.Count %>
     <% loop Chapters %>
-    yy
         <% if Track %>
         <track kind="chapters" src="$Track.URL" srclang="$Language" />
         <% else_if $Chapters %>
@@ -49,3 +50,5 @@
     <% end_loop %>
     <% end_if %>
 </video>
+
+<% end_if %>

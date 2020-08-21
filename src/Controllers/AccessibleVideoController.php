@@ -13,6 +13,12 @@ class AccessibleVideoController extends Controller
         'chapters'
     ];
 
+    /**
+     * Display closed captioning transcript from CMS as a VTT file
+     *
+     * @param HttpRequest $request
+     * @return string
+     */
     public function transcript($request)
     {
         $id = (int) $request->param('ID');
@@ -24,8 +30,16 @@ class AccessibleVideoController extends Controller
                 $record
             );
         }
+
+        return '';
     }
 
+    /**
+     * Display audio description from CMS as a VTT file
+     *
+     * @param HttpRequest $request
+     * @return string
+     */
     public function audiodescription($request)
     {
         $id = (int) $request->param('ID');
@@ -39,6 +53,12 @@ class AccessibleVideoController extends Controller
         }
     }
 
+    /**
+     * Display chapter listing from CMS as a VTT file
+     *
+     * @param HttpRequest $request
+     * @return string
+     */
     public function chapters($request)
     {
         $id = (int) $request->param('ID');

@@ -112,7 +112,37 @@ If entering in the CMS, you need to enter the "Chapter \<number\>, followed by t
 
 ## Configuration
 
-TBC
+### VTT Content Controller
+Behind the scenes, the module will call a barebones controller to serve CMS-generated WebVTT content in a manner that the Able player can use. This controller has a configurable url_segment and a route that is automatically loaded to ensure conflicts with a published page are unlikely. This settings can be changed using Silverstripe's Config API
+
+```yml
+Catalyst\AblePlayer\AccessibleVideoController:
+  url_segment: "__video"
+
+SilverStripe\Control\Director:
+  rules:
+    '__video': Catalyst\AblePlayer\AccessibleVideoController
+
+Catalyst\AblePlayer\AccessibleVideoAudioDescription:
+  audiodescription_controller_link: "__video/audiodescription"
+Catalyst\AblePlayer\AccessibleVideoCaption:
+  transcript_controller_link: "__video/transcript"
+Catalyst\AblePlayer\AccessibleVideoChapters:
+  chapters_controller_link: "__video/chapters"
+```
+
+This controller serves three methods: `transcript`, `audiodescription`, and `chapters`, and each one is called like this: `https://yoursite/__video/transcript/$ID`, where $ID is the CMS record ID containing your VTT text. The names of these methods are hardcoded and cannot be changed; however, you can probably define your own using different names using an extension (this is untested).
+
+### Shortcode Frontend
+The Able player requires a version of JQuery greater than 3.2.1 and will load it automatically if the vimeo or youtube shortcodes are rendered on the page. If you are not using JQuery on your site this should be an issue, but if you have a conflicting version that is otherwise compatible with the player, you can instruct the parser to load a different version directly from the CDN.
+
+You can also redefine the location of the Vimeo Javascript player, which is required to view Vimeo-hosted videos. 
+
+```yml
+Catalyst\AblePlayer\AccessibleVideoShortcodeProvider:
+  jquery_version: "3.2.1"
+  vimeo_player_url: "https://player.vimeo.com/api/player.js"
+```
 
 ## Contributions
 
@@ -124,6 +154,7 @@ Contributions are always welcome! Raise an issue and a pull request to start a d
 * Adding sign-language support is possible with self-hosted videos, but not YouTube
 * Obtain auto-generated transcripts from YouTube videos
 * Querying Title and other metadata from APIs
+* The "first" chapter defined in the CMS is the default. The list should be sortable or otherwise configurable in the CMS
 
 ## Help needed
 
