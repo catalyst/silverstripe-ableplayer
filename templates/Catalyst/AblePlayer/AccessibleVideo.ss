@@ -1,8 +1,19 @@
+<% if Chapters %>
+<div id="chapters-$YouTubeID$VimeoID"></div>
+<% end_if %>
 <video id="video1"
     data-able-player
+    data-skin="2020"
     preload="auto"
     width="480"
     height="360"
+    <% if Chapters %>
+    data-chapters-div="chapters-$YouTubeID$VimeoID"
+    data-use-chapters-button="true"
+    data-chapters-title="Table of Contents"
+    data-chapters-default="Chapter 2"
+    data-prevnext-unit="chapter"
+    <% end_if %>
     <% if Type == 'YouTube' %>data-youtube-id="$YouTubeID"<% end_if %>
     <% if Type == 'Vimeo' %>data-vimeo-id="$VimeoID"<% end_if %>
     <% if CaptionsTrackID || Transcript %>playsinline<% end_if %>

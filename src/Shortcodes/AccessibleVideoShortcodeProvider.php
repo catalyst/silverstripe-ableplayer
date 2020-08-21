@@ -69,6 +69,7 @@ class AccessibleVideoShortcodeProvider implements ShortcodeHandler
             if ($record->ID && $record->Type == 'Vimeo') {
                 Requirements::javascript(self::config()->vimeo_player_url);
             }
+
             return SSViewer::execute_template(
                 'Catalyst/AblePlayer/AccessibleVideo',
                 $record
