@@ -10,8 +10,7 @@
     <% if Chapters %>
     data-chapters-div="chapters-$YouTubeID$VimeoID"
     data-use-chapters-button="true"
-    data-chapters-title="Table of Contents"
-    data-chapters-default="Chapter 2"
+    data-chapters-title="$Chapters.First.Title"
     data-prevnext-unit="chapter"
     <% end_if %>
     <% if Type == 'YouTube' %>data-youtube-id="$YouTubeID"<% end_if %>

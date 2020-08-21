@@ -20,7 +20,8 @@ class AccessibleVideoChapters extends DataObject
 
     private static $db = [
         'Language' => 'Varchar(3)',
-        'Chapters' => 'Text'
+        'Chapters' => 'Text',
+        'Title' => 'Varchar(64)'
     ];
 
     private static $has_one = [
@@ -34,10 +35,12 @@ class AccessibleVideoChapters extends DataObject
 
 
     private static $defaults = [
+        'Title' => 'Table of Contents',
         'Language' => 'en'
     ];
 
     private static $summary_fields = [
+        'Title',
         'Language',
         'getTrackURL' => 'Track URL'
     ];
@@ -51,6 +54,7 @@ class AccessibleVideoChapters extends DataObject
         $fields->addFieldsToTab(
             'Root.Main',
             [
+                TextField::create('Title', 'Title'),
                 DropdownField::create(
                     'Language',
                     'Source Language'
