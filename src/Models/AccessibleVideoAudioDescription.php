@@ -9,6 +9,7 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\i18n\Data\Intl\IntlLocales;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBField;
 
 class AccessibleVideoAudioDescription extends DataObject
 {
@@ -39,7 +40,7 @@ class AccessibleVideoAudioDescription extends DataObject
 
     private static $summary_fields = [
         'Language',
-        'Track.URL'
+        'getTrackURL' => 'Track URL'
     ];
 
     private static $audiodescription_controller_link = '__video/audiodescription';
@@ -92,5 +93,15 @@ Lorem ipsum dolor sit amet
     public function AudioDescriptionLink()
     {
         return $this->config()->audiodescription_controller_link . '/' . $this->ID;
+    }
+
+    public function getTrackURL()
+    {
+        $html = $this->AudioDescriptionLink();
+        if($this->TrackID) {
+            return $this->Track()->URL;
+        }
+
+        return DBField::create_field('HTMLText', $html);
     }
 }

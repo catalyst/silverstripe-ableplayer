@@ -9,6 +9,7 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\i18n\Data\Intl\IntlLocales;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBField;
 
 class AccessibleVideoCaption extends DataObject
 {
@@ -41,7 +42,7 @@ class AccessibleVideoCaption extends DataObject
     private static $summary_fields = [
         'Label',
         'Language',
-        'Track.URL'
+        'getTrackURL' => 'Track URL'
     ];
 
     private static $transcript_controller_link = '__video/transcript';
@@ -93,5 +94,15 @@ Lorem ipsum dolor sit amet
     public function TranscriptLink()
     {
         return $this->config()->transcript_controller_link . '/' . $this->ID;
+    }
+
+    public function getTrackURL()
+    {
+        $html = $this->TranscriptLink();
+        if($this->TrackID) {
+            return $this->Track()->URL;
+        }
+
+        return DBField::create_field('HTMLText', $html);
     }
 }

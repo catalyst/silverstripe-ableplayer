@@ -9,6 +9,7 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\i18n\Data\Intl\IntlLocales;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBField;
 
 class AccessibleVideoChapters extends DataObject
 {
@@ -38,7 +39,7 @@ class AccessibleVideoChapters extends DataObject
 
     private static $summary_fields = [
         'Language',
-        'Track.URL'
+        'getTrackURL' => 'Track URL'
     ];
 
     private static $chapters_controller_link = '__video/chapters';
@@ -83,15 +84,18 @@ Chapter 2
         return $fields;
     }
 
-    public function getTitle()
-    {
-        if($this->Language) {
-            return IntlLocales::config()->languages[$this->Language];
-        }
-    }
-
     public function ChaptersLink()
     {
         return $this->config()->chapters_controller_link . '/' . $this->ID;
+    }
+
+    public function getTrackURL()
+    {
+        $html = $this->ChaptersLink();
+        if($this->TrackID) {
+            return $this->Track()->URL;
+        }
+
+        return DBField::create_field('HTMLText', $html);
     }
 }
