@@ -21,11 +21,6 @@ class AccessibleVideo extends DataObject
     private static $singular_name = 'Video';
     private static $plural_name = 'Videos';
 
-    //pass in a different version of jquery, if you're already using it elsewhere
-    //Version 3.2.1 or higher is recommended
-    //this needs to match the exact version loaded from //code.jquery.com/jquery-%s.min.js, or jquery will get loaded twice
-    private static $jquery_version = '3.5.1';
-
     private static $summary_fields = [
         'URL' => "Link",
         'Title' => "Title",
