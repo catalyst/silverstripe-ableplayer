@@ -112,6 +112,8 @@ If entering in the CMS, you need to enter the "Chapter \<number\>, followed by t
 
 ## Configuration
 
+The Able player is very extensible, and this module is designed to be configurable and flexible to your needs. 
+
 ### VTT Content Controller
 Behind the scenes, the module will call a barebones controller to serve CMS-generated WebVTT content in a manner that the Able player can use. This controller has a configurable url_segment and a route that is automatically loaded to ensure conflicts with a published page are unlikely. This settings can be changed using Silverstripe's Config API
 
