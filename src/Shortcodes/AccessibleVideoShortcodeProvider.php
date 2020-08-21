@@ -4,6 +4,7 @@ namespace Catalyst\AblePlayer;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Convert;
 use SilverStripe\View\Parsers\ShortcodeHandler;
+use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
 
 class AccessibleVideoShortcodeProvider implements ShortcodeHandler
@@ -56,6 +57,14 @@ class AccessibleVideoShortcodeProvider implements ShortcodeHandler
         }
 
         if ($record && $record->ID) {
+            $url = sprintf("//code.jquery.com/jquery-%s.min.js", AccessibleVideo::config()->jquery_version);
+            Requirements::javascript($url);
+            Requirements::javascript("catalyst/silverstripe-ableplayer:client/thirdparty/js.cookie.js");
+            Requirements::javascript("catalyst/silverstripe-ableplayer:client/build/ableplayer.min.js");
+            Requirements::css("catalyst/silverstripe-ableplayer:client/build/ableplayer.min.css");
+            if ($record->ID && $record->Type == 'Vimeo') {
+                Requirements::javascript('https://player.vimeo.com/api/player.js');
+            }
             return SSViewer::execute_template(
                 'Catalyst/AblePlayer/AccessibleVideo',
                 $record

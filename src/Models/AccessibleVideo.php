@@ -2,7 +2,6 @@
 namespace Catalyst\AblePlayer;
 
 use SilverStripe\ORM\DataObject;
-use SilverStripe\View\Requirements;
 
 class AccessibleVideo extends DataObject
 {
@@ -33,19 +32,6 @@ class AccessibleVideo extends DataObject
         'Captions.Count' => 'Caption tracks',
         'AudioDescriptions.Count' => 'Audio descriptions'
     ];
-
-    public function __construct($record = null, $isSingleton = false, $queryParams = [])
-    {
-        parent::__construct($record, $isSingleton, $queryParams);
-        $url = sprintf("//code.jquery.com/jquery-%s.min.js", $this->config()->jquery_version);
-        Requirements::javascript($url);
-        Requirements::javascript("catalyst/silverstripe-ableplayer:client/thirdparty/js.cookie.js");
-        Requirements::javascript("catalyst/silverstripe-ableplayer:client/build/ableplayer.min.js");
-        Requirements::css("catalyst/silverstripe-ableplayer:client/build/ableplayer.min.css");
-        if ($this->ID && $this->Type == 'Vimeo') {
-            Requirements::javascript('https://player.vimeo.com/api/player.js');
-        }
-    }
 
     public function YouTubeID()
     {
