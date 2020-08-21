@@ -30,6 +30,11 @@ class AccessibleVideo extends DataObject
         'Chapters.Count' => 'Chapters'
     ];
 
+    /**
+     * Extract the YouTube identifier from the record's URL
+     *
+     * @return mixed string identifier, or null if not a recognizable YouTube video
+     */
     public function YouTubeID()
     {
         if($this->Type !== 'YouTube') return null;
@@ -41,8 +46,15 @@ class AccessibleVideo extends DataObject
                 return $matches[1];
             }
         }
+
+        return null;
     }
 
+    /**
+     * Extract the Vimeo identifier from the record's URL
+     *
+     * @return mixed string identifier, or null if not a recognizable Vimeo video
+     */
     public function VimeoID()
     {
         if($this->Type !== 'Vimeo') return null;
@@ -53,5 +65,8 @@ class AccessibleVideo extends DataObject
                 return $matches[4];
             }
         }
+
+        return null;
+
     }
 }

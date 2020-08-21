@@ -86,16 +86,31 @@ Lorem ipsum dolor sit amet
         return $fields;
     }
 
+    /**
+     * Transcripts don't have titles, so use the label in the CMS heading instead
+     *
+     * @return string
+     */
     public function getTitle()
     {
         return $this->Label;
     }
 
+    /**
+     * If a VTT file is not uploaded, this url is used to load content from the CMS
+     *
+     * @return string
+     */
     public function TranscriptLink()
     {
         return $this->config()->transcript_controller_link . '/' . $this->ID;
     }
 
+    /**
+     * Returns the Track URL of an uploaded file, or a link to CMS-driven content
+     *
+     * @return DBField
+     */
     public function getTrackURL()
     {
         $html = $this->TranscriptLink();

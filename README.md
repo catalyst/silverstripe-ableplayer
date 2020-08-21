@@ -148,14 +148,15 @@ Catalyst\AblePlayer\AccessibleVideoShortcodeProvider:
 
 Contributions are always welcome! Raise an issue and a pull request to start a discussion.
 
-## Planned features / known issues
+## Planned features and known issues
 * Only Vimeo and YouTube are supported players at this time
 * Not able to self-host videos yet
 * Adding sign-language support is possible with self-hosted videos, but not YouTube
 * Obtain auto-generated transcripts from YouTube videos
 * Querying Title and other metadata from APIs
 * The "first" chapter defined in the CMS is the default. The list should be sortable or otherwise configurable in the CMS
+* Audio is not supported yet
 
 ## Help needed
 
-Shortcodes aren't great, and I would love to inject content automatically using TinyMCE. If you have an idea on how to do this, please raise and issue and a pull request. 
+Shortcodes aren't great, and I would love to inject content automatically using TinyMCE. If you have an idea on how to do this, please raise an issue and create a pull request. 

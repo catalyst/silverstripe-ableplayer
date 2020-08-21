@@ -30,7 +30,11 @@ class AccessibleVideoShortcodeProvider implements ShortcodeHandler
     }
 
     /**
-     * Replace "[vimeo id=n] or [youtube id=n]" shortcode w3c markup.
+     * Replace "[vimeo id=n] or [youtube id=n]" shortcode w3c markup, or
+     * Replace "[vimeo url=n] or [youtube url=n]" shortcode w3c markup
+     *
+     * id is an AccessibleVideo record loaded in the CMS. url is a YouTube or
+     * Vimeo URL, which is matched to an AccessibleVideo record with that URL
      *
      * @param array $arguments Arguments passed to the parser
      * @param string $content Raw shortcode

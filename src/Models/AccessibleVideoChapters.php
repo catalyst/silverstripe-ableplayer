@@ -88,11 +88,21 @@ Chapter 2
         return $fields;
     }
 
+    /**
+     * If a VTT file is not uploaded, this url is used to load content from the CMS
+     *
+     * @return string
+     */
     public function ChaptersLink()
     {
         return $this->config()->chapters_controller_link . '/' . $this->ID;
     }
 
+    /**
+     * Returns the Track URL of an uploaded file, or a link to CMS-driven content
+     *
+     * @return DBField
+     */
     public function getTrackURL()
     {
         $html = $this->ChaptersLink();
