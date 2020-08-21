@@ -13,7 +13,8 @@ class AccessibleVideo extends DataObject
 
     private static $has_many = [
         'Captions' => AccessibleVideoCaption::class,
-        'AudioDescriptions' => AccessibleVideoAudioDescription::class
+        'AudioDescriptions' => AccessibleVideoAudioDescription::class,
+        'Chapters' => AccessibleVideoChapters::class
     ];
 
     private static $table_name = 'AccessibleVideo';
@@ -25,7 +26,8 @@ class AccessibleVideo extends DataObject
         'URL' => "Link",
         'Title' => "Title",
         'Captions.Count' => 'Caption tracks',
-        'AudioDescriptions.Count' => 'Audio descriptions'
+        'AudioDescriptions.Count' => 'Audio descriptions',
+        'Chapters.Count' => 'Chapters'
     ];
 
     public function YouTubeID()

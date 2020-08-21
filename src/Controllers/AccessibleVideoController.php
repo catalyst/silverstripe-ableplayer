@@ -9,7 +9,8 @@ class AccessibleVideoController extends Controller
     private static $url_segment = '__video';
     private static $allowed_actions = [
         'transcript',
-        'audiodescription'
+        'audiodescription',
+        'chapters'
     ];
 
     public function transcript($request)
@@ -33,6 +34,19 @@ class AccessibleVideoController extends Controller
             $this->response->addHeader('content-type', 'text/vtt');
             return SSViewer::execute_template(
                 'Catalyst/AblePlayer/AccessibleVideoCaptionTranscript',
+                $record
+            );
+        }
+    }
+
+    public function chapters($request)
+    {
+        $id = (int) $request->param('ID');
+
+        if ($id && $record = AccessibleVideoChapters::get()->byID($id)) {
+            $this->response->addHeader('content-type', 'text/vtt');
+            return SSViewer::execute_template(
+                'Catalyst/AblePlayer/AccessibleVideoChapters',
                 $record
             );
         }

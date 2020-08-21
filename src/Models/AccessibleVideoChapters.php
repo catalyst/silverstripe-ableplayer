@@ -10,17 +10,16 @@ use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\i18n\Data\Intl\IntlLocales;
 use SilverStripe\ORM\DataObject;
 
-class AccessibleVideoAudioDescription extends DataObject
+class AccessibleVideoChapters extends DataObject
 {
-    private static $table_name = 'AccessibleVideoAudioDescription';
-    private static $default_sort = 'Label ASC';
-    private static $singular_name = 'Caption';
-    private static $plural_name = 'Captions';
+    private static $table_name = 'AccessibleVideoChapters';
+    private static $singular_name = 'Chapters';
+    private static $plural_name = 'Chapter Lists';
 
 
     private static $db = [
         'Language' => 'Varchar(3)',
-        'AudioDescription' => 'Text'
+        'Chapters' => 'Text'
     ];
 
     private static $has_one = [
@@ -42,12 +41,12 @@ class AccessibleVideoAudioDescription extends DataObject
         'Track.URL'
     ];
 
-    private static $audiodescription_controller_link = '__video/audiodescription';
+    private static $chapters_controller_link = '__video/chapters';
 
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->removeByName(['ParentID', 'AudioDescription', 'Track']);
+        $fields->removeByName(['ParentID', 'Chapters', 'Track']);
         $fields->addFieldsToTab(
             'Root.Main',
             [
@@ -56,20 +55,22 @@ class AccessibleVideoAudioDescription extends DataObject
                     'Source Language'
                 )->setSource(IntlLocales::config()->languages),
                 ToggleCompositeField::create(
-                    'AudioDescriptionToggle',
-                    'Audio Description',
+                    'ChapterToggle',
+                    'Chapters',
                     [
-                        UploadField::create('Track', 'Captions Track')
-                            ->setDescription('Web VTT file prepared for this video. This is written text describing the scene for users unable to see. For more on this format, see <a href="https://en.wikipedia.org/wiki/WebVTT#Example_of_WebVTT_format" target="_blank">this article</a>'),
-                        TextareaField::create('AudioDescription', 'Audio Description')
+                        UploadField::create('Track', 'Chapters Track')
+                            ->setDescription('Web VTT file prepared for this video. This breaks the video up into distinct sections for users to skip to. For more on this format, see <a href="https://en.wikipedia.org/wiki/WebVTT#Example_of_WebVTT_format" target="_blank">this article</a>'),
+                        TextareaField::create('Chapters', 'Chapters')
                             ->setDescription(
-                                'If an existing audio description (VTT file) is not available, you can manually create one here.'
+                                'If an existing chapters (VTT file) are not available, you can manually create one here.'
                                 .'This format is plain text, but basic HTML (such as bold and italics) can be used sparingly.'
                             )->setAttribute(
                                 'placeholder',
-'00:00:00.429 --> 00:00:09.165
+'Chapter 1
+00:00:00.429 --> 00:00:09.165
 Lorem ipsum dolor sit amet
 
+Chapter 2
 00:00:09.165 --> 00:00:10.792
 <v Narrator> Et <i>tu</i>, Bruta?
 
@@ -89,8 +90,8 @@ Lorem ipsum dolor sit amet
         }
     }
 
-    public function AudioDescriptionLink()
+    public function ChaptersLink()
     {
-        return $this->config()->audiodescription_controller_link . '/' . $this->ID;
+        return $this->config()->chapters_controller_link . '/' . $this->ID;
     }
 }

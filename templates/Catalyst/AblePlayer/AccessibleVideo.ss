@@ -27,4 +27,15 @@
     <% end_if %>
     <% end_loop %>
     <% end_if %>
+
+    <% if Chapters.Count %>xx
+    <% loop Chapters %>
+    yy
+        <% if Track %>
+        <track kind="chapters" src="$Track.URL" srclang="$Language" />
+        <% else_if $Chapters %>
+        <track kind="chapters" src="$ChaptersLink" srclang="$Language" />
+        <% end_if %>
+    <% end_loop %>
+    <% end_if %>
 </video>
