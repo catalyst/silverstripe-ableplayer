@@ -15,8 +15,8 @@ class AccessibleVideoAudioDescription extends DataObject
 {
     private static $table_name = 'AccessibleVideoAudioDescription';
     private static $default_sort = 'Label ASC';
-    private static $singular_name = 'Caption';
-    private static $plural_name = 'Captions';
+    private static $singular_name = 'Audio Description';
+    private static $plural_name = 'Audio Descriptions';
 
 
     private static $db = [
