@@ -67,9 +67,9 @@ class AccessibleVideoShortcodeProvider implements ShortcodeHandler
         if ($record && $record->ID) {
             $url = sprintf("//code.jquery.com/jquery-%s.min.js", self::config()->jquery_version);
             Requirements::javascript($url);
-            Requirements::javascript("catalyst/silverstripe-ableplayer:client/thirdparty/js.cookie.js");
-            Requirements::javascript("catalyst/silverstripe-ableplayer:client/build/ableplayer.min.js");
-            Requirements::css("catalyst/silverstripe-ableplayer:client/build/ableplayer.min.css");
+            Requirements::javascript("catalyst/silverstripe-ableplayer:client/able/thirdparty/js.cookie.js");
+            Requirements::javascript("catalyst/silverstripe-ableplayer:client/able/build/ableplayer.min.js");
+            Requirements::css("catalyst/silverstripe-ableplayer:client/able/build/ableplayer.min.css");
             if ($record->ID && $record->Type == 'Vimeo') {
                 Requirements::javascript(self::config()->vimeo_player_url);
             }
