@@ -3,19 +3,20 @@
  * Register the default internal shortcodes.
  */
 
-use Catalyst\AblePlayer\AccessibleVideoShortcodeProvider;
+use Catalyst\AblePlayer\VimeoShortcodeProvider;
+use Catalyst\AblePlayer\YouTubeShortcodeProvider;
 use SilverStripe\View\Parsers\ShortcodeParser;
 
 ShortcodeParser::get('default')
     ->register(
         'vimeo',
-        [AccessibleVideoShortcodeProvider::class, 'handle_shortcode']
+        [VimeoShortcodeProvider::class, 'handle_shortcode']
     );
 
 ShortcodeParser::get('default')
     ->register(
         'youtube',
-        [AccessibleVideoShortcodeProvider::class, 'handle_shortcode']
+        [YouTubeShortcodeProvider::class, 'handle_shortcode']
     );
 
 

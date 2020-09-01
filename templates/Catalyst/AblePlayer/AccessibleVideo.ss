@@ -1,5 +1,4 @@
 <% if $YouTubeID || $VimeoID %>
-
 <% if Chapters %>
 <div id="chapters-$YouTubeID$VimeoID"></div>
 <% end_if %>
@@ -15,8 +14,8 @@
     data-chapters-title="$Chapters.First.Title"
     data-prevnext-unit="chapter"
     <% end_if %>
-    <% if Type == 'YouTube' %>data-youtube-id="$YouTubeID"<% end_if %>
-    <% if Type == 'Vimeo' %>data-vimeo-id="$VimeoID"<% end_if %>
+    <% if $YouTubeID %>data-youtube-id="$YouTubeID"<% end_if %>
+    <% if $VimeoID %>data-vimeo-id="$VimeoID"<% end_if %>
     <% if CaptionsTrackID || Transcript %>playsinline<% end_if %>
     >
 
