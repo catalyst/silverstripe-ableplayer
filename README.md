@@ -114,6 +114,9 @@ Terrill Thompson
 
 If entering in the CMS, you need to enter the "Chapter \<number\>, followed by timestamps, followed by the name of the section.  The first two lines (WEBVTT followed by whitespace) will automatically generated and should be omitted.
 
+### Self-hosted videos
+Self-hosted videos are hosted as Silverstripe assets on your website, rather than Vimeo or YouTube. An accompanying sign language video is provided for each <source> element using the data-sign-src attribute. This results in a sign language video being played in a pop-up window in sync with the program video. These videos also support displaying an audible description of the video contents instead of the original video. 
+
 ## Configuration
 
 The Able player is very extensible, and this module is designed to be configurable and flexible to your needs. 
@@ -155,7 +158,6 @@ Catalyst\AblePlayer\AccessibleVideoShortcodeProvider:
 Contributions are always welcome! Raise an issue and a pull request to start a discussion.
 
 ## Planned features and known issues
-* Adding sign-language support to self-hosted videos
 * Querying Title and other metadata from APIs
 * The "first" chapter defined in the CMS is the default. The list should be sortable or otherwise configurable in the CMS
 * Audio is not supported yet

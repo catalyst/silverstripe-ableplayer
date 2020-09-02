@@ -19,8 +19,17 @@
     <% if CaptionsTrackID || Transcript %>playsinline<% end_if %>
     >
 
-    <% if VideoID %>
-        <source type=$Video.MimeType src=$Video.URL />
+    <% if $VideoID %>
+        <source type="$Video.MimeType"
+            src="$Video.URL"
+
+            <% if $DescribedVideoID %>
+            data-desc-src="$DescribedVideo.URL"
+            <% end_if %>
+
+            <% if $SignLanguageVideoID %>
+            data-sign-src="$SignLanguageVideo.URL"/>
+            <% end_if %>
     <% end_if %>
 
     <% if Captions.Count %>
