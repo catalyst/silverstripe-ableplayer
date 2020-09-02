@@ -7,6 +7,12 @@ class Vimeo extends AccessibleVideo
     private static $db = [
         'URL' => 'Varchar(255)',
     ];
+    private static $singular_name = 'Vimeo Video';
+    private static $plural_name = 'Vimeo Videos';
+
+    private static $summary_fields = [
+        'URL' => 'Link'
+    ];
 
     /**
      * Extract the Vimeo identifier from the record's URL

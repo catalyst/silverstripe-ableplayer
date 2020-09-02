@@ -7,6 +7,12 @@ class YouTube extends AccessibleVideo
     private static $db = [
         'URL' => 'Varchar(255)',
     ];
+    private static $singular_name = 'YouTube Video';
+    private static $plural_name = 'YouTube Videos';
+
+    private static $summary_fields = [
+        'URL' => 'Link'
+    ];
 
     /**
      * Extract the YouTube identifier from the record's URL

@@ -20,7 +20,6 @@ class AccessibleVideo extends DataObject
 
     private static $summary_fields = [
         'Title' => "Title",
-        'ClassName.ShortName' => 'Type',
         'Captions.Count' => 'Caption tracks',
         'AudioDescriptions.Count' => 'Audio descriptions',
         'Chapters.Count' => 'Chapters'
