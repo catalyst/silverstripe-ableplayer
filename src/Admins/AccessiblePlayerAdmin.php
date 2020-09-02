@@ -12,8 +12,10 @@ class AccessiblePlayerAdmin extends ModelAdmin
         SelfHostedVideo::class
     ];
 
-    private static $menu_title = 'Accessible Videos';
+    private static $menu_title = 'Accessible Media';
 
     private static $url_segment = 'accessible';
+
+    private static $menu_icon_class = 'font-icon-universal-access';
 
 }
