@@ -3,6 +3,11 @@ namespace Catalyst\AblePlayer;
 
 class YouTube extends AccessibleVideo
 {
+    private static $table_name = 'YouTube';
+    private static $db = [
+        'URL' => 'Varchar(255)',
+    ];
+
     /**
      * Extract the YouTube identifier from the record's URL
      *

@@ -3,6 +3,11 @@ namespace Catalyst\AblePlayer;
 
 class Vimeo extends AccessibleVideo
 {
+    private static $table_name = 'Vimeo';
+    private static $db = [
+        'URL' => 'Varchar(255)',
+    ];
+
     /**
      * Extract the Vimeo identifier from the record's URL
      *
