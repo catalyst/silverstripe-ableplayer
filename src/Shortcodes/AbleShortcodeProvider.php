@@ -2,12 +2,10 @@
 namespace Catalyst\AblePlayer;
 
 use SilverStripe\Core\Config\Configurable;
-use SilverStripe\Core\Convert;
-use SilverStripe\View\Parsers\ShortcodeHandler;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\SSViewer;
 
-abstract class AccessibleVideoShortcodeProvider
+abstract class AbleShortcodeProvider
 {
     use Configurable;
 

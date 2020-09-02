@@ -1,13 +1,10 @@
 <?php
 namespace Catalyst\AblePlayer;
 
-use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Convert;
 use SilverStripe\View\Parsers\ShortcodeHandler;
-use SilverStripe\View\Requirements;
-use SilverStripe\View\SSViewer;
 
-class YouTubeShortcodeProvider extends AccessibleVideoShortcodeProvider implements ShortcodeHandler
+class YouTubeShortcodeProvider extends AbleShortcodeProvider implements ShortcodeHandler
 {
     /**
      * Gets the list of shortcodes provided by this handler

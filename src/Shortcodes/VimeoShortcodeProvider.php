@@ -1,13 +1,11 @@
 <?php
 namespace Catalyst\AblePlayer;
 
-use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Convert;
 use SilverStripe\View\Parsers\ShortcodeHandler;
 use SilverStripe\View\Requirements;
-use SilverStripe\View\SSViewer;
 
-class VimeoShortcodeProvider extends AccessibleVideoShortcodeProvider implements ShortcodeHandler
+class VimeoShortcodeProvider extends AbleShortcodeProvider implements ShortcodeHandler
 {
     private static $vimeo_player_url = 'https://player.vimeo.com/api/player.js';
 
