@@ -22,7 +22,7 @@ class SelfHostedVideo extends AccessibleVideo
             'Root.Main',
             LiteralField::create(
                 'DisplayShortcode',
-                '<div class="info message">Embed this video with [self-hosted-video id='.$this->ID.']</div>'
+                '<div class="info message">Embed this video with [selfhostedvideo id="'.$this->ID.'"]</div>'
             )
         );
 

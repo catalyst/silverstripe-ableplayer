@@ -10,15 +10,19 @@ composer require catalyst/silverstripe-ableplayer
 
 Usage is via shortcode in any HTMLTextField
 
-[vimeo url=...]
+[vimeo url="..."]
 
-[youtube url=...]
+[youtube url="..."]
 
-The URL is the same one you would visit on any desktop browser - simply copy and paste that. 
+[selfhostedvideo id="123"]
 
-An accessible video record is retrieved from the CMS, or automatically created if it does not exist. You can add closed-captioning, audio descriptions, and chapter listings to these records for any ISO 639-3 (3 letter) language.
+For YouTube and Vimeo, the URL is the same one you would visit on any desktop browser - simply copy and paste that. 
+
+An accessible video record is retrieved from the CMS, or automatically created if it does not exist. You can add closed-captioning, audio descriptions, and chapter listings to these records for any ISO 639-3 (3 letter) language. These are loaded automatically from YouTube or Vimeo if they're present. 
 
 Note that not all videos are embeddable, as this is a setting controlled by the owner on Vimeo or YouTube. 
+
+Self-hosted videos need to be uploaded and added to the CMS first, and are referenced by their ID. The embed shortcode is displayed on the record after it is saved.
 
 ### VTT Formatting
 
@@ -151,10 +155,7 @@ Catalyst\AblePlayer\AccessibleVideoShortcodeProvider:
 Contributions are always welcome! Raise an issue and a pull request to start a discussion.
 
 ## Planned features and known issues
-* Only Vimeo and YouTube are supported players at this time
-* Not able to self-host videos yet
-* Adding sign-language support is possible with self-hosted videos, but not YouTube
-* Obtain auto-generated transcripts from YouTube videos
+* Adding sign-language support to self-hosted videos
 * Querying Title and other metadata from APIs
 * The "first" chapter defined in the CMS is the default. The list should be sortable or otherwise configurable in the CMS
 * Audio is not supported yet
