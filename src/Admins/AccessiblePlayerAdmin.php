@@ -16,6 +16,6 @@ class AccessiblePlayerAdmin extends ModelAdmin
 
     private static $url_segment = 'accessible';
 
-    private static $menu_icon_class = 'font-icon-universal-access';
+    private static $menu_icon_class = 'font-icon-accessibility';
 
 }
