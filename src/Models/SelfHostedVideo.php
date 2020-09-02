@@ -3,6 +3,7 @@ namespace Catalyst\AblePlayer;
 
 use SilverStripe\Assets\File;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\ORM\FieldType\DBField;
 
 class SelfHostedVideo extends AccessibleVideo
 {
@@ -19,6 +20,11 @@ class SelfHostedVideo extends AccessibleVideo
     ];
     private static $singular_name = 'Self-hosted Video';
     private static $plural_name = 'Self-hosted Videos';
+
+    private static $summary_fields = [
+        'HasSignLanguage' => 'Sign language',
+        'HasDescribedVideo' => 'Described',
+    ];
 
     public function getCMSFields()
     {
@@ -41,5 +47,12 @@ class SelfHostedVideo extends AccessibleVideo
         );
 
         return $fields;
+    }
+
+    public function HasSignLanguage() {
+        return DBField::create_field('HTMLFragment', $this->SignLanguageVideoID ? 'Yes' : 'No');
+    }
+    public function HasDescribedVideo() {
+        return DBField::create_field('HTMLFragment', $this->DescribedVideoID ? 'Yes' : 'No');
     }
 }
