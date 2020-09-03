@@ -45,6 +45,6 @@ class Vimeo extends AccessibleVideo
      */
     public function GetVimeoPlayer()
     {
-        Requirements::javascript(self::config()->vimeo_player_url)
+        Requirements::javascript(self::config()->vimeo_player_url);
     }
 }
