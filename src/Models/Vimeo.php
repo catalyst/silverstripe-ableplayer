@@ -17,7 +17,6 @@ class Vimeo extends AccessibleVideo
     ];
 
     private static $vimeo_player_url = 'https://player.vimeo.com/api/player.js';
-]
 
     /**
      * Extract the Vimeo identifier from the record's URL
