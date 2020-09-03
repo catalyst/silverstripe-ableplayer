@@ -1,6 +1,8 @@
 <?php
 namespace Catalyst\AblePlayer;
 
+use SilverStripe\View\Requirements;
+
 class Vimeo extends AccessibleVideo
 {
     private static $table_name = 'Vimeo';
@@ -33,5 +35,16 @@ class Vimeo extends AccessibleVideo
 
         return null;
 
+    }
+
+
+    /**
+     * Load Vimeo Player Javascript for frontend templates
+     *
+     * @return void
+     */
+    public function GetVimeoPlayer()
+    {
+        Requirements::javascript(self::config()->vimeo_player_url)
     }
 }
