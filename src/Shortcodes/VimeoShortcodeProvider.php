@@ -7,8 +7,6 @@ use SilverStripe\View\Requirements;
 
 class VimeoShortcodeProvider extends AbleShortcodeProvider implements ShortcodeHandler
 {
-    private static $vimeo_player_url = 'https://player.vimeo.com/api/player.js';
-
     /**
      * Gets the list of shortcodes provided by this handler
      *
@@ -56,7 +54,7 @@ class VimeoShortcodeProvider extends AbleShortcodeProvider implements ShortcodeH
         }
 
         if ($record && $record->ID) {
-            Requirements::javascript(self::config()->vimeo_player_url);
+            Requirements::javascript(Vimeo::config()->vimeo_player_url);
             return static::render($record);
         }
 

@@ -150,6 +150,7 @@ You can also redefine the location of the Vimeo Javascript player, which is requ
 ```yml
 Catalyst\AblePlayer\AccessibleVideoShortcodeProvider:
   jquery_version: "3.2.1"
+Catalyst\AblePlayer\Vimeo:
   vimeo_player_url: "https://player.vimeo.com/api/player.js"
 ```
 
