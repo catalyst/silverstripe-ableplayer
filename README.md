@@ -1,5 +1,19 @@
 # Silverstripe AblePlayer
 
+The module allows content authors to manage fully accessible video content via the CMS, powered by Able Player - [a fully accessible cross-browser HTML5 media player created by W3C](https://ableplayer.github.io/ableplayer/)
+
+Some key features include:
+
+* Self hosted accessible video content management
+* Youtube and Vimeo Accessible content integration
+* Includes a full set of player controls that are keyboard-accessible, properly labeled for screen reader users, and controllable by speech recognition users
+* Sign language video
+* Video Description Audio
+* Audio description management
+* Audio transcriptions management and auto highlighting
+* Closed caption management
+* Chapter management
+
 ## Installation
 
 ```bash
