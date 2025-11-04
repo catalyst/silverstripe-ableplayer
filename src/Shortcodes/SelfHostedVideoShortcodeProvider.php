@@ -1,4 +1,5 @@
 <?php
+
 namespace Catalyst\AblePlayer;
 
 use SilverStripe\Core\Convert;
@@ -43,5 +44,4 @@ class SelfHostedVideoShortcodeProvider extends AbleShortcodeProvider implements 
         }
         return '';
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Catalyst\AblePlayer;
 
 use SilverStripe\Control\Controller;
