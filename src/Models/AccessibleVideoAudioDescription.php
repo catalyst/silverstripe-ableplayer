@@ -1,11 +1,11 @@
 <?php
+
 namespace Catalyst\AblePlayer;
 
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\ToggleCompositeField;
 use SilverStripe\i18n\Data\Intl\IntlLocales;
 use SilverStripe\ORM\DataObject;
@@ -65,10 +65,10 @@ class AccessibleVideoAudioDescription extends DataObject
                         TextareaField::create('AudioDescription', 'Audio Description')
                             ->setDescription(
                                 'If an existing audio description (VTT file) is not available, you can manually create one here.'
-                                .'This format is plain text, but basic HTML (such as bold and italics) can be used sparingly.'
+                                    . 'This format is plain text, but basic HTML (such as bold and italics) can be used sparingly.'
                             )->setAttribute(
                                 'placeholder',
-'00:00:00.429 --> 00:00:09.165
+                                '00:00:00.429 --> 00:00:09.165
 Lorem ipsum dolor sit amet
 
 00:00:09.165 --> 00:00:10.792
@@ -90,7 +90,7 @@ Lorem ipsum dolor sit amet
      */
     public function getTitle()
     {
-        if($this->Language) {
+        if ($this->Language) {
             return IntlLocales::config()->languages[$this->Language] ?? $this->Language;
         }
     }
@@ -113,7 +113,7 @@ Lorem ipsum dolor sit amet
     public function getTrackURL()
     {
         $html = $this->AudioDescriptionLink();
-        if($this->TrackID) {
+        if ($this->TrackID) {
             return $this->Track()->URL;
         }
 

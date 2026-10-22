@@ -1,9 +1,12 @@
 <?php
+
 namespace Catalyst\AblePlayer;
 
 use SilverStripe\Core\Config\Configurable;
+use SilverStripe\TemplateEngine\SSTemplateEngine;
 use SilverStripe\View\Requirements;
-use SilverStripe\View\SSViewer;
+use SilverStripe\View\ViewLayerData;
+
 
 abstract class AbleShortcodeProvider
 {
@@ -28,10 +31,9 @@ abstract class AbleShortcodeProvider
         Requirements::javascript("catalyst/silverstripe-ableplayer:client/able/build/ableplayer.min.js");
         Requirements::css("catalyst/silverstripe-ableplayer:client/able/build/ableplayer.min.css");
 
-        return SSViewer::execute_template(
+        return SSTemplateEngine::execute_template(
             'Catalyst/AblePlayer/AccessibleVideo',
-            $record
+            ViewLayerData::create($record)
         );
     }
-
 }
